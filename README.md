@@ -34,3 +34,55 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+```
+nextjs-simple-cms
+├─ eslint.config.mjs
+├─ middleware.ts
+├─ next.config.ts
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.mjs
+├─ public
+│  ├─ file.svg
+│  ├─ globe.svg
+│  ├─ next.svg
+│  ├─ vercel.svg
+│  └─ window.svg
+├─ README.md
+├─ src
+│  ├─ app
+│  │  ├─ api
+│  │  │  └─ posts
+│  │  │     ├─ route.ts
+│  │  │     └─ [id]
+│  │  │        └─ route.ts
+│  │  ├─ auth
+│  │  │  ├─ components
+│  │  │  │  ├─ index.ts
+│  │  │  │  └─ LogoutButton.tsx
+│  │  │  ├─ login
+│  │  │  │  └─ page.tsx
+│  │  │  └─ signup
+│  │  │     └─ page.tsx
+│  │  ├─ components
+│  │  │  └─ Header.tsx
+│  │  ├─ globals.css
+│  │  ├─ layout.tsx
+│  │  ├─ page.tsx
+│  │  └─ posts
+│  │     ├─ components
+│  │     │  └─ DeletePostButton.tsx
+│  │     ├─ new
+│  │     │  └─ page.tsx
+│  │     └─ [id]
+│  │        └─ page.tsx
+│  ├─ data
+│  │  └─ posts.ts
+│  └─ libs
+│     ├─ supabase.ts
+│     └─ useUser.ts
+├─ tsconfig.json
+└─ yarn.lock
+
+```
