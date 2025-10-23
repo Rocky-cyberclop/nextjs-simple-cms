@@ -50,3 +50,9 @@ export async function updatePost(
   if (error) return null;
   return data;
 }
+
+export async function deletePost(id: string): Promise<boolean> {
+  const { error } = await supabase.from("posts").delete().eq("id", id);
+  if (error) throw error;
+  return true;
+}

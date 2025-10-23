@@ -1,13 +1,12 @@
+import { addPost, getPosts } from "@/data/posts";
 import { NextResponse } from "next/server";
-import { getPosts, addPost } from "@/data/posts";
 
 export async function GET() {
   try {
     const posts = await getPosts();
     return NextResponse.json(posts);
   } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "Unknown server error";
+    const message = err instanceof Error ? err.message : "Unknown server error";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
@@ -24,8 +23,7 @@ export async function POST(req: Request) {
     const newPost = await addPost({ title: body.title, content: body.content });
     return NextResponse.json(newPost, { status: 201 });
   } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "Unknown server error";
+    const message = err instanceof Error ? err.message : "Unknown server error";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

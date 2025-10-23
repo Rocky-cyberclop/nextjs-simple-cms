@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { DeletePostButton } from "../components/DeletePostButton";
 
 type Post = {
   id: number;
@@ -58,35 +59,38 @@ export default function PostDetailPage() {
   return (
     <main className="p-6 max-w-md">
       <h1 className="text-2xl font-bold mb-4">✏️ Edit Post</h1>
-      <form onSubmit={handleSave} className="flex flex-col gap-3">
-        <input
-          className="border p-2 rounded"
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-          required
-        />
-        <textarea
-          className="border p-2 rounded h-32"
-          value={post.content}
-          onChange={(e) => setPost({ ...post, content: e.target.value })}
-          required
-        />
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded disabled:opacity-60"
-          disabled={saving}
-        >
-          {saving ? "Saving..." : "Save Changes"}
-        </button>
-        <button
-          type="button"
-          className="bg-gray-500 text-white px-4 py-2 rounded"
-          onClick={() => router.push("/")}
-        >
-          Back
-        </button>
-        {error && <p className="text-red-600">{error}</p>}
-      </form>
+      <div className="flex flex-col gap-3">
+        <form onSubmit={handleSave} className="flex flex-col gap-3">
+          <input
+            className="border p-2 rounded"
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            required
+          />
+          <textarea
+            className="border p-2 rounded h-32"
+            value={post.content}
+            onChange={(e) => setPost({ ...post, content: e.target.value })}
+            required
+          />
+          <button
+            type="submit"
+            className="bg-green-600 text-white px-4 py-2 rounded disabled:opacity-60"
+            disabled={saving}
+          >
+            {saving ? "Saving..." : "Save Changes"}
+          </button>
+          <button
+            type="button"
+            className="bg-gray-500 text-white px-4 py-2 rounded"
+            onClick={() => router.push("/")}
+          >
+            Back
+          </button>
+          {error && <p className="text-red-600">{error}</p>}
+        </form>
+        <DeletePostButton id={id} />
+      </div>
     </main>
   );
 }
