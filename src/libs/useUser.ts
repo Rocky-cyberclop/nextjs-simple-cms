@@ -1,7 +1,6 @@
-// src/libs/useUser.tsx
 "use client";
 import { useEffect, useState } from "react";
-import { supabase } from "./supabase";
+import { supabase } from "./supabase/client";
 
 export function useUser() {
   const [user, setUser] = useState<any>(null);

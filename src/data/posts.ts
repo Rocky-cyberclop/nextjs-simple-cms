@@ -1,4 +1,4 @@
-import { supabase } from "@/libs/supabase";
+import { supabase } from "@/libs/supabase/client";
 
 export type Post = {
   id: string;
