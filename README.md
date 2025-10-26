@@ -1,88 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 Simple CMS Demo
 
-## Getting Started
+A simple CMS built with **Next.js**, **Supabase**, and **TypeScript**.  
+This project demonstrates authentication, protected routes, and a minimal CMS-style dashboard.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- 🔐 Authentication with email/password  
+- 🗄️ Supabase as the backend (PostgreSQL)  
+- ⚛️ Built on Next.js App Router  
+- 🧱 Clean and modular structure  
+- 🧩 Ready for local or production deployment
+
+---
+
+## 🧰 Prerequisites
+
+Before running the project, make sure you have:
+
+- [Node.js](https://nodejs.org/) (v18+)
+- [Yarn](https://yarnpkg.com/)
+- A [Supabase](https://supabase.com/) account and project
+
+---
+
+## ⚙️ 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
+git clone https://github.com/your-username/simple-cms-demo.git
+cd simple-cms-demo
+```
+
+## 📦 2. Install Dependencies
+Use Yarn to install all required packages:
+```bash
+yarn install
+```
+
+## 🔑 3. Environment Variables
+Create a file named .env in the project root with the following contents:
+```bash
+# Supabase configuration
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR-SUPABASE-PROJECT-URL.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR-SUPABASE-ANON-KEY
+```
+
+## 🧑‍💻 4. Run the Development Server
+Start your local dev server:
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Then open your browser and visit:
+
+👉 http://localhost:3000
+
+
+## 🏗️ 5. Build for Production
+To build an optimized production version:
+```bash
+yarn build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
+## 🚀 6. Start the Production Server
+After building, run:
+```bash
+yarn start
 ```
-nextjs-simple-cms
-├─ eslint.config.mjs
-├─ middleware.ts
-├─ next.config.ts
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.mjs
-├─ public
-│  ├─ file.svg
-│  ├─ globe.svg
-│  ├─ next.svg
-│  ├─ vercel.svg
-│  └─ window.svg
-├─ README.md
-├─ src
-│  ├─ app
-│  │  ├─ api
-│  │  │  └─ posts
-│  │  │     ├─ route.ts
-│  │  │     └─ [id]
-│  │  │        └─ route.ts
-│  │  ├─ auth
-│  │  │  ├─ components
-│  │  │  │  ├─ index.ts
-│  │  │  │  └─ LogoutButton.tsx
-│  │  │  ├─ login
-│  │  │  │  └─ page.tsx
-│  │  │  └─ signup
-│  │  │     └─ page.tsx
-│  │  ├─ components
-│  │  │  └─ Header.tsx
-│  │  ├─ globals.css
-│  │  ├─ layout.tsx
-│  │  ├─ page.tsx
-│  │  └─ posts
-│  │     ├─ components
-│  │     │  └─ DeletePostButton.tsx
-│  │     ├─ new
-│  │     │  └─ page.tsx
-│  │     └─ [id]
-│  │        └─ page.tsx
-│  ├─ data
-│  │  └─ posts.ts
-│  └─ libs
-│     ├─ supabase.ts
-│     └─ useUser.ts
-├─ tsconfig.json
-└─ yarn.lock
 
+🧩 Project Structure
+
+```bash
+📦 simple-cms-demo/
+ ┣ 📂 app/                  # App router pages and layouts
+ ┣ 📂 libs/                 # Supabase client and helpers
+ ┣ 📂 components/           # Reusable UI components
+ ┣ 📂 public/               # Static assets (favicon, images, etc.)
+ ┣ 📜 .env                  # Environment variables
+ ┣ 📜 package.json
+ ┣ 📜 tsconfig.json
+ ┣ 📜 README.md
 ```
+
+🧪 Testing the Authentication Flow
+
+1. Go to /auth/signup → Create a new user
+
+2. Log in at /auth/login using your credentials
+
+3. You’ll be redirected to / if successful
+
+4. Middleware protects all routes except /auth/*
