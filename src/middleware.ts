@@ -22,12 +22,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // if (user && isAuthPage) {
-  //   const homeUrl = req.nextUrl.clone();
-  //   homeUrl.pathname = "/";
-  //   return NextResponse.redirect(homeUrl);
-  // }
-
   return response;
 }
 

@@ -2,7 +2,6 @@
 import { supabase } from "@/libs/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { login } from "../actions/actions";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -12,24 +11,23 @@ export default function LoginPage() {
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
-    await login(e, setLoading, setError, email, password, router);
-    // e.preventDefault();
-    // setLoading(true);
-    // setError(null);
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-    // const { data, error } = await supabase.auth.signInWithPassword({
-    //   email,
-    //   password,
-    // });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-    // setLoading(false);
-    // if (error) {
-    //   setError(error.message);
-    //   return;
-    // }
+    setLoading(false);
+    if (error) {
+      setError(error.message);
+      return;
+    }
 
-    // // logged in, redirect to home
-    // router.push("/");
+    // logged in, redirect to home
+    router.push("/");
   }
 
   return (
