@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { createClient } from "./libs/supabase/server";
+import { createClient } from "@/libs/supabase/server";
 
 export async function middleware(req: NextRequest) {
   const response = NextResponse.next();
@@ -14,7 +14,6 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const isAuthPage =
     pathname.startsWith("/auth/login") || pathname.startsWith("/auth/signup");
-  console.log(!!user, !!isAuthPage, !user && !isAuthPage, pathname);
 
   if (!user && !isAuthPage) {
     const loginUrl = req.nextUrl.clone();
