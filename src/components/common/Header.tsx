@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useUser } from "@/libs/useUser";
-import LogoutButton from "@/app/auth/components/LogoutButton";
+import { useUser } from "@/hooks/auth/useUser";
+import LogoutButton from "@/components/auth/LogoutButton";
 
-export default function Header() {
+export const Header = () => {
   const { user, loading } = useUser();
 
   return (
@@ -28,4 +28,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};

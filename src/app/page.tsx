@@ -1,28 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePosts } from "@/hooks/posts";
 import Link from "next/link";
-import { Post } from "@/data/posts";
 
 export default function Page() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("/api/posts");
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  const { posts, loading } = usePosts();
 
   return (
     <main className="p-6">

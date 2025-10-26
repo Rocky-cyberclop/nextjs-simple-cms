@@ -1,38 +1,15 @@
 "use client";
+import { useCreatePost } from "@/hooks/posts";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const { createPost, loading, error } = useCreatePost();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      const res = await fetch("/api/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, content }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({ error: "Unknown" }));
-        setError(data.error || "Failed to create post");
-        setLoading(false);
-        return;
-      }
-
-      // navigate back and optionally revalidate
-      router.push("/");
-    } catch (err) {
-      setError("Network error");
-      setLoading(false);
-    }
+    await createPost({ title, content });
   }
 
   return (
