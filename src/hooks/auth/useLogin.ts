@@ -27,8 +27,7 @@ export function useLogin() {
       setError(error.message);
       return;
     }
-
-    router.push("/");
+    window.location.href = "/";
   }
 
   return {
